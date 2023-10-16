@@ -1,0 +1,117 @@
+[gd_scene load_steps=12 format=3 uid="uid://m0j0m8gyy6x4"]
+
+[ext_resource type="Script" path="res://main/main.gd" id="1_sspqf"]
+[ext_resource type="Texture2D" uid="uid://dbq15wd4gtdpo" path="res://assets/backgrounds/GalaxyUno.png" id="1_t0ruu"]
+[ext_resource type="Texture2D" uid="uid://b4wgbtx804h0b" path="res://assets/backgrounds/spr_stars01.png" id="2_ywgp8"]
+[ext_resource type="Texture2D" uid="uid://dlndau8jm5pcx" path="res://assets/backgrounds/spr_stars02.png" id="3_7iiod"]
+[ext_resource type="FontFile" uid="uid://da3o3s635t6iq" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="4_yjrnk"]
+[ext_resource type="Texture2D" uid="uid://cffjgquwjnyau" path="res://assets/ui/blue_button00.png" id="5_nqr57"]
+[ext_resource type="Texture2D" uid="uid://cmbvssp86ftwt" path="res://assets/ui/yellow_button00.png" id="6_wutps"]
+[ext_resource type="Texture2D" uid="uid://cqb8ge3dm0wvi" path="res://assets/ui/green_button00.png" id="7_momu3"]
+[ext_resource type="LabelSettings" uid="uid://cpyicsnnenyrf" path="res://assets/GM_32_White.tres" id="8_32uwo"]
+[ext_resource type="PackedScene" uid="uid://gcm0p2xvb15i" path="res://sun/sun.tscn" id="9_0m0yj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f64u0"]
+font = ExtResource("4_yjrnk")
+font_size = 72
+font_color = Color(0.945098, 0.447059, 0.360784, 1)
+outline_size = 8
+outline_color = Color(0.192157, 0, 0.937255, 1)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_sspqf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_t0ruu")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ywgp8")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7iiod")
+
+[node name="MC" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Label" type="Label" parent="CanvasLayer/MC"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "SPACE
+SHOOTER"
+label_settings = SubResource("LabelSettings_f64u0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MC"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 24
+
+[node name="PlayButton" type="TextureButton" parent="CanvasLayer/MC/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_nqr57")
+texture_pressed = ExtResource("6_wutps")
+texture_hover = ExtResource("7_momu3")
+
+[node name="Label" type="Label" parent="CanvasLayer/MC/VBoxContainer/PlayButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+label_settings = ExtResource("8_32uwo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="TextureButton" parent="CanvasLayer/MC/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_nqr57")
+texture_pressed = ExtResource("6_wutps")
+texture_hover = ExtResource("7_momu3")
+
+[node name="Label" type="Label" parent="CanvasLayer/MC/VBoxContainer/ExitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+label_settings = ExtResource("8_32uwo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sun" parent="." instance=ExtResource("9_0m0yj")]
+position = Vector2(24, 24)
+scale = Vector2(0.3, 0.3)
+
+[connection signal="pressed" from="CanvasLayer/MC/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
