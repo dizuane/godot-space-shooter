@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://xo3wepodg1ui"]
+[gd_scene load_steps=9 format=3 uid="uid://xo3wepodg1ui"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_x4qm2"]
 [ext_resource type="PackedScene" uid="uid://clyccphouth0g" path="res://level_bg/level_bg.tscn" id="2_1ttq4"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bqpufjk4obvby" path="res://enemies/enemy_bomber.tscn" id="5_he155"]
 [ext_resource type="PackedScene" uid="uid://cpjimgrc4fmtw" path="res://enemies/enemy_bio.tscn" id="6_plblb"]
 [ext_resource type="PackedScene" uid="uid://dmy6yguxwc00s" path="res://wave_manager/wave_manager.tscn" id="7_yf71i"]
+[ext_resource type="PackedScene" uid="uid://5n4ktpj8dlfi" path="res://power_up/power_up.tscn" id="8_ly27n"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_x4qm2")
@@ -26,3 +27,6 @@ position = Vector2(332, 223)
 position = Vector2(214, 260)
 
 [node name="WaveManager" parent="." instance=ExtResource("7_yf71i")]
+
+[node name="PowerUp" parent="." instance=ExtResource("8_ly27n")]
+position = Vector2(333, 343)
