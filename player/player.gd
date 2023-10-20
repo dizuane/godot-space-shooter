@@ -82,4 +82,16 @@ func on_powerup_hit(power_up: GameData.POWERUP_TYPE) -> void:
 
 
 func _on_area_entered(area):
-	print("PLAYER ENTERED: ", area)
+	#print("PLAYER ENTERED: %s, %s" % [
+	#	area,
+	#	area.get_groups()
+	#])
+	
+	if area.is_in_group(GameData.GROUP_ENEMY_SHIP):
+		SignalManager.on_player_hit.emit(GameData.COLLISION_DAMAGE)
+	elif area.is_in_group(GameData.GROUP_SAUCER):
+		SignalManager.on_player_hit.emit(GameData.COLLISION_DAMAGE)
+	elif area.is_in_group(GameData.GROUP_HOMING_MISSILE):
+		SignalManager.on_player_hit.emit(GameData.MISSILE_DAMAGE)
+	elif area.is_in_group(GameData.GROUP_ENEMY_BULLET):
+		SignalManager.on_player_hit.emit(area.get_damage())

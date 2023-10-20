@@ -200,9 +200,9 @@ graph_offset = Vector2(-223.451, -39)
 rotates = false
 script = ExtResource("1_f2qsm")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["saucer"]]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 texture = ExtResource("1_6icuo")
