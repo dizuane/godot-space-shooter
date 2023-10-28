@@ -11,6 +11,8 @@ class_name Player
 @export var bullet_damage: int = 10
 @export var bullet_direction: Vector2 = Vector2.UP
 
+@export var health_boost: int = 50
+
 const MARGIN: float = 32.0
 
 var _upper_left: Vector2
@@ -76,9 +78,10 @@ func shoot() -> void:
 
 
 func on_powerup_hit(power_up: GameData.POWERUP_TYPE) -> void:
-	print("power_up: ", power_up)
 	if power_up == GameData.POWERUP_TYPE.SHIELD:
 		shield.enable_shield()
+	elif power_up == GameData.POWERUP_TYPE.HEALTH:
+		SignalManager.on_player_health_bonus.emit(health_boost)
 
 
 func _on_area_entered(area):
