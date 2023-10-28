@@ -7,6 +7,15 @@ radius = 15.0
 height = 40.0
 
 [node name="EnemyZipper" instance=ExtResource("1_lynel")]
+shoots = null
+aims_at_player = null
+bullet_damage = null
+bullet_speed = null
+bullet_direction = null
+bullet_wait_time = null
+bullet_wait_time_var = null
+kill_me_score = null
+damage_taken = 30
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 animation = &"zipper_1"
